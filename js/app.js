@@ -18,12 +18,30 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     this.x = this.x + (this.speed * dt);
+    this.catchPlayer();
 };
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
 
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+Enemy.prototype.catchPlayer = function() {
+    var enemyRadius = 30;
+    var playerRadius = 20;
+    var dx = this.x - player.x;
+    var dy = this.y - player.y;
+    console.log(player.x);
+//    console.log(dx);
+//    console.log(dy);
+    var distance = Math.sqrt(dx * dx + dy * dy);
+
+    if (distance < enemyRadius + playerRadius) {
+        // collision detected!
+        alert(':( You have been catched！');
+        player.gameReset();
+    }
 };
 
 // Now write your own player class
@@ -59,6 +77,14 @@ Player.prototype.handleInput = function(direction){
     if(direction === 'down'&& this.y < 400){
         this.y += 82.5;
     }
+    if(this.y < 10){
+        this.gameReset();
+    }
+};
+
+Player.prototype.gameReset = function() {
+    this.x = 200;
+    this.y = 400;
 };
 
 // Now instantiate your objects.
