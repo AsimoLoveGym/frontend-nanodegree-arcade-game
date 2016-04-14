@@ -91,12 +91,25 @@ Player.prototype.gameReset = function() {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-var enemy1 = new Enemy(0,220,10);
-var enemy2 = new Enemy(0,140,70);
-var enemy3 = new Enemy(0,60,40);
+//var enemy1 = new Enemy(0,220,10);
+//var enemy2 = new Enemy(0,140,70);
+//var enemy3 = new Enemy(0,60,40);
 
-var allEnemies = [enemy1, enemy2,enemy3];
-console.table(allEnemies);
+var allEnemies = [];
+var intervalTime = 800;
+
+window.setInterval(function() {
+    var randomNum = Math.random() * 100;
+    var maxSpeed = 200;
+    var minSpeed = 70;
+    var randomSpeed = Math.random() * (maxSpeed - minSpeed) + minSpeed;
+    var bugLaneNum = Math.floor(Math.random() * 3 ) + 1;
+        enemy = new Enemy(-100, 80*bugLaneNum-20, randomSpeed);
+    allEnemies.push(enemy);
+    return allEnemies;
+}, intervalTime);
+
+//console.table(allEnemies);
 
 
 var player = new Player(200,400);
