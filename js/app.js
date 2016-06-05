@@ -21,10 +21,11 @@ Enemy.prototype.update = function (dt) {
     this.catchPlayer();
 };
 
+var imageHeightDiff = 70;
+
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function () {
-
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y + imageHeightDiff);
 };
 
 Enemy.prototype.catchPlayer = function () {
@@ -53,7 +54,7 @@ var Player = function(x,y) {
     this.y = y;
     this.sprite = 'images/char-boy.png';
 };
-
+// for what update? 
 Player.prototype.update = function(dt) {
     this.x * (dt);
     this.y * (dt);
