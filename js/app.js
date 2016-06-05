@@ -1,5 +1,5 @@
 // Enemies our player must avoid
-var Enemy = function(x,y,speed) {
+var Enemy = function (x, y, speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
@@ -8,12 +8,12 @@ var Enemy = function(x,y,speed) {
     this.x = x;
     this.y = y;
     this.speed = speed;
-    this.sprite = 'images/enemy-bug.png';
+    this.sprite = 'images/enemy-Trump.png';
 };
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
-Enemy.prototype.update = function(dt) {
+Enemy.prototype.update = function (dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
@@ -22,12 +22,12 @@ Enemy.prototype.update = function(dt) {
 };
 
 // Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
+Enemy.prototype.render = function () {
 
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-Enemy.prototype.catchPlayer = function() {
+Enemy.prototype.catchPlayer = function () {
     var enemyRadius = 30;
     var playerRadius = 20;
     var dx = this.x - player.x;
@@ -63,18 +63,18 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-Player.prototype.handleInput = function(direction){
+Player.prototype.handleInput = function (direction) {
 
-    if(direction === 'left'&& this.x > 51){
+    if (direction === 'left' && this.x > 51) {
         this.x -= 100;
     }
-    if(direction === 'right'&& this.x < 400){
+    if (direction === 'right' && this.x < 400) {
         this.x += 100;
     }
-    if(direction === 'up'&& this.y > 51){
+    if (direction === 'up' && this.y > 51) {
         this.y -= 82.5;
     }
-    if(direction === 'down'&& this.y < 400){
+    if (direction === 'down' && this.y < 400) {
         this.y += 82.5;
     }
     if(this.y < 10){
