@@ -26,7 +26,7 @@ var Engine = (function(global) {
         lastTime;
 
     canvas.width = 606;
-    canvas.height = 707;
+    canvas.height = 909;
     doc.body.appendChild(canvas);
 
     /* This function serves as the kickoff point for the game loop itself
@@ -114,9 +114,10 @@ var Engine = (function(global) {
                 'images/brown-block.png',   // Row 2 of 3 of brown
                 'images/brown-block.png',   // Row 3 of 3 of brown
                 'images/grass-block.png',    // Row 1 of 2 of grass
-                'images/grass-block.png'    // Row 2 of 2 of grass
+                'images/grass-block.png',    // Row 2 of 2 of grass
+                'images/stone-block-tall.png'    // Row 2 of 2 of stone
             ],
-            numRows = 7,
+            numRows = 8,
             numCols = 6,
             row, col;
 
@@ -133,10 +134,26 @@ var Engine = (function(global) {
                  * so that we get the benefits of caching these images, since
                  * we're using them over and over.
                  */
-                ctx.drawImage(Resources.get(rowImages[row]), col * 101, row * 83);
+                if (row < 7) {
+                    ctx.drawImage(Resources.get(rowImages[row]), col * 101, row * 83);
+                } else {
+                    ctx.drawImage(Resources.get(rowImages[row]), col * 101, row * 83+35);
+                }
             }
         }
-
+        
+        ctx.save();
+        ctx.globalAlpha = 0.6;
+        ctx.drawImage(Resources.get('images/canada.png'), 50, 171);
+        ctx.drawImage(Resources.get('images/canada.png'), 454, 171);
+        ctx.drawImage(Resources.get('images/CanataMap.png'), 202, 45);
+        ctx.drawImage(Resources.get('images/US.png'), 5, 500);
+        ctx.font = "bold 30px Arial";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText ("Great Wall of Trump", 303, 650);
+        ctx.drawImage(Resources.get('images/Mexico.png'), 5, 790);
+        ctx.restore();
         renderEntities();
     }
 
@@ -173,7 +190,12 @@ var Engine = (function(global) {
         'images/grass-block.png',
         'images/enemy-Trump.png',
         'images/brown-block.png',
-        'images/char-boy.png'
+        'images/char-boy.png',
+        'images/CanataMap.png',
+        'images/canada.png',
+        'images/stone-block-tall.png',
+        'images/Mexico.png',
+        'images/US.png'
     ]);
     Resources.onReady(init);
 
