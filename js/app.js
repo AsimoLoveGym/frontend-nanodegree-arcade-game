@@ -19,6 +19,9 @@ Enemy.prototype.update = function (dt) {
     // all computers.
     this.x = this.x + (this.speed * dt);
     this.catchPlayer();
+    if (this.x > 606) {
+        this.bugReset();
+    }
 };
 
 var imageHeightDiff = 70;
@@ -96,19 +99,44 @@ Player.prototype.gameReset = function() {
 //var enemy2 = new Enemy(0,140,70);
 //var enemy3 = new Enemy(0,60,40);
 
+
 var allEnemies = [];
+/*
 var intervalTime = 800;
 
 window.setInterval(function() {
-    var randomNum = Math.random() * 100;
+//    var randomNum = Math.random() * 100;
     var maxSpeed = 200;
     var minSpeed = 70;
     var randomSpeed = Math.random() * (maxSpeed - minSpeed) + minSpeed;
-    var bugLaneNum = Math.floor(Math.random() * 3 ) + 1;
-        enemy = new Enemy(-100, 80*bugLaneNum-20, randomSpeed);
+    var bugLaneNum = Math.floor(Math.random() * 3 ) + 2;
+        enemy = new Enemy(-100, 83*bugLaneNum-20, randomSpeed);
     allEnemies.push(enemy);
+    console.log(allEnemies.length);
     return allEnemies;
 }, intervalTime);
+*/
+
+var level = 0;
+var difficulty = level + 5;
+var maxSpeed = level*10 + 200;
+var minSpeed = level*10 + 70;
+
+for (i=0; i<difficulty; i++) {
+    var randomSpeed = Math.random() * (maxSpeed - minSpeed) + minSpeed;
+    var bugLaneNum = Math.floor(Math.random() * 3 ) + 2;
+        enemy = new Enemy(-100, 83*bugLaneNum-20, randomSpeed);
+    allEnemies.push(enemy);
+    console.log(allEnemies.length);
+//    return allEnemies;
+}
+
+Enemy.prototype.bugReset = function() {
+    this.x = -100;
+    this.y = 83*(Math.floor(Math.random() * 3 ) + 2)-20;
+    this.speed = Math.random() * (maxSpeed - minSpeed) + minSpeed;
+};
+
 
 //console.table(allEnemies);
 
