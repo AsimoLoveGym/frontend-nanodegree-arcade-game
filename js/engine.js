@@ -45,8 +45,15 @@ var Engine = (function(global) {
         /* Call our update/render functions, pass along the time delta to
          * our update function since it may be used for smooth animation.
          */
-        update(dt);
-        render();
+        if (game.gameOver) {
+            rendGameOver();
+        } else if (game.gameWin) {
+//            alert('Congratuation, you beat Trump！');
+            renderWin();
+        } else {
+            update(dt);
+            render();
+        }
 
         /* Set our lastTime variable which is used to determine the time delta
          * for the next time this function is called.
@@ -64,7 +71,7 @@ var Engine = (function(global) {
      * game loop.
      */
     function init() {
-        reset();
+//        reset();
         lastTime = Date.now();
         main();
     }
@@ -81,6 +88,27 @@ var Engine = (function(global) {
     function update(dt) {
         updateEntities(dt);
         // checkCollisions();
+    }
+    
+    function rendGameOver() {
+        // Render the game over image
+        ctx.beginPath();
+        ctx.rect(0, 0, 606, 909);
+        ctx.fillStyle = "beige";
+        ctx.fill();
+        ctx.drawImage(Resources.get('images/game-over.png'), 20, 50);
+        doc.getElementById("gameOver").style.visibility="visible";
+    }
+    
+    function renderWin() {
+        // Render the game winning image
+        console.log("Step 2: Try to draw the win image");
+        ctx.beginPath();
+        ctx.rect(0, 0, 606, 909);
+        ctx.fillStyle = "beige";
+        ctx.fill();
+        ctx.drawImage(Resources.get('images/you-win.png'), 20, 50);
+        doc.getElementById("gameWin").style.visibility="visible";
     }
 
     /* This is called by the update function and loops through all of the
@@ -107,6 +135,7 @@ var Engine = (function(global) {
         /* This array holds the relative URL to the image used
          * for that particular row of the game level.
          */
+        //ctx.globalAlpha = 0.6;//for debug
         var rowImages = [
                 'images/grass-block.png',   // Top row is water
                 'images/grass-block.png',   // Row 2 of 1 of grass
@@ -125,6 +154,7 @@ var Engine = (function(global) {
          * and, using the rowImages array, draw the correct image for that
          * portion of the "grid"
          */
+        
         for (row = 0; row < numRows; row++) {
             for (col = 0; col < numCols; col++) {
                 /* The drawImage function of the canvas' context element
@@ -134,6 +164,8 @@ var Engine = (function(global) {
                  * so that we get the benefits of caching these images, since
                  * we're using them over and over.
                  */
+                //ctx.globalAlpha = 0.6;//for debug
+        
                 if (row < 7) {
                     ctx.drawImage(Resources.get(rowImages[row]), col * 101, row * 83);
                 } else {
@@ -141,7 +173,12 @@ var Engine = (function(global) {
                 }
             }
         }
-        
+    
+        ctx.font = "500 45px 'Comic Sans MS'";
+        ctx.fillStyle = "tomato";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "top";
+        ctx.fillText ("Move to Canada", 303, -10);
         ctx.save();
         ctx.globalAlpha = 0.6;
         ctx.drawImage(Resources.get('images/canada.png'), 50, 171);
@@ -149,12 +186,14 @@ var Engine = (function(global) {
         ctx.drawImage(Resources.get('images/CanataMap.png'), 202, 45);
         ctx.drawImage(Resources.get('images/US.png'), 5, 500);
         ctx.font = "bold 30px Arial";
+        ctx.fillStyle = "black";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
         ctx.fillText ("Great Wall of Trump", 303, 650);
         ctx.drawImage(Resources.get('images/Mexico.png'), 5, 790);
         ctx.restore();
         renderEntities();
+        
     }
 
     /* This function is called by the render function and is called on each game
@@ -170,6 +209,7 @@ var Engine = (function(global) {
         });
 
         player.render();
+        game.render(level);
     }
 
     /* This function does nothing but it could have been a good place to
@@ -178,6 +218,7 @@ var Engine = (function(global) {
      */
     function reset() {
         // noop
+        win.location.reload();
     }
 
     /* Go ahead and load all of the images we know we're going to need to
@@ -190,12 +231,18 @@ var Engine = (function(global) {
         'images/grass-block.png',
         'images/enemy-Trump.png',
         'images/brown-block.png',
+        'images/char-wife.png',
+        'images/char-girl.png',
         'images/char-boy.png',
+        'images/char-you.png',
+        'images/char-money.png',
         'images/CanataMap.png',
         'images/canada.png',
         'images/stone-block-tall.png',
         'images/Mexico.png',
-        'images/US.png'
+        'images/US.png',
+        'images/game-over.png',
+        'images/you-win.png'
     ]);
     Resources.onReady(init);
 

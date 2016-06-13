@@ -5,3 +5,57 @@ body {
 canvas {
     border: 1px solid black;
 }
+
+div#gameOver {
+    visibility: hidden;
+    position: relative;
+    bottom: 380px;
+}
+
+p.endParagraph {
+    color: deeppink;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+}
+
+p.winParagraph {
+    color: deeppink;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-size: 27px;
+    font-weight: 800;
+    margin: auto;
+}
+
+div#gameWin {
+    visibility: hidden;
+    position: relative;
+    bottom: 580px;
+}
+/*
+p#gameWinParagraph {
+    color: deeppink;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+}
+*/
+
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+}
+.button:hover {
+    background-color: darkorange;
+}
+.emphasized {
+    font-style: italic;
+}
