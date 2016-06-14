@@ -24,6 +24,10 @@ i.fa {
     margin-right: 2em;
 }
 
+i.fa:hover {
+    color: olivedrab;
+}
+
 div#gameOver {
     visibility: hidden;
     position: relative;

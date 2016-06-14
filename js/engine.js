@@ -48,7 +48,6 @@ var Engine = (function(global) {
         if (game.gameOver) {
             rendGameOver();
         } else if (game.gameWin) {
-//            alert('Congratuation, you beat Trump！');
             renderWin();
         } else {
             update(dt);
@@ -91,7 +90,7 @@ var Engine = (function(global) {
     }
     
     function rendGameOver() {
-        // Render the game over image
+        // Render the game-over image
         ctx.beginPath();
         ctx.rect(0, 0, 606, 909);
         ctx.fillStyle = "beige";
@@ -173,7 +172,7 @@ var Engine = (function(global) {
                 }
             }
         }
-        
+        //For the background images of this game.
         ctx.save();
         ctx.globalAlpha = 0.6;
         ctx.drawImage(Resources.get('images/canada.png'), 50, 171);

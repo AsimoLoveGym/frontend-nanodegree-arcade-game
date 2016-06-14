@@ -1,17 +1,17 @@
+//Game for controlling game over and youWin.
 var Game = function () {
     this.gameOver = false;
     this.gameWin = false;
 };
 
-
-// Enemies our player must avoid
+//Few global variables
 var level = 0;
-//game.render(level);
 var difficulty = 0;
 var numOfBug = difficulty + 5;
 var maxSpeed = difficulty*10 + 200;
 var minSpeed = difficulty*10 + 70;
 
+// Enemies our player must avoid
 var Enemy = function (x, y, speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
@@ -37,6 +37,7 @@ Enemy.prototype.update = function (dt) {
     }
 };
 
+// This is the pixal difference in height for Trump.png to original png files
 var imageHeightDiff = 70;
 
 // Draw the enemy on the screen, required method for game
@@ -44,22 +45,41 @@ Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y + imageHeightDiff);
 };
 
+//For collision detection
 Enemy.prototype.catchPlayer = function () {
     var enemyRadius = 30;
     var playerRadius = 20;
     var dx = this.x - player.x;
     var dy = this.y - player.y;
-    console.log(player.x, player.y);
-//    console.log(dx);
-//    console.log(dy);
+
+//For debug    
+//    console.log(player.x, player.y);
     var distance = Math.sqrt(dx * dx + dy * dy);
 
     if (distance < enemyRadius + playerRadius) {
         // collision detected!
-        alert(':( You have been catched！');
         game.gameOver = true;
         player.gameReset();
     }
+};
+
+//With game progressed, difficulties of game increased, more bugs, faster speed
+Enemy.prototype.levelUp = function() {
+    var randomSpeed = Math.random() * (maxSpeed - minSpeed) + minSpeed;
+    var bugLaneNum = Math.floor(Math.random() * 3 ) + 2;
+        enemy = new Enemy(-100, 83*bugLaneNum-20, randomSpeed);
+    allEnemies.push(enemy);
+// For debug
+//    console.log(allEnemies.length);
+    for (i=0; i<numOfBug; i++) {
+        allEnemies[i].speed = allEnemies[i].speed + 50;
+    }
+};
+
+Enemy.prototype.bugReset = function() {
+    this.x = -100;
+    this.y = 83*(Math.floor(Math.random() * 3 ) + 2)-20;
+    this.speed = Math.random() * (maxSpeed - minSpeed) + minSpeed;
 };
 
 // Now write your own player class
@@ -71,7 +91,7 @@ var Player = function(x,y) {
     this.y = y;
     this.sprite = 'images/char-wife.png';
 };
-// for what update? 
+// for what update, seems not necessary
 Player.prototype.update = function(dt) {
     this.x * (dt);
     this.y * (dt);
@@ -129,56 +149,15 @@ Player.prototype.gameReset = function() {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-//var enemy1 = new Enemy(0,220,10);
-//var enemy2 = new Enemy(0,140,70);
-//var enemy3 = new Enemy(0,60,40);
-
-
 var allEnemies = [];
-/*
-var intervalTime = 800;
-
-window.setInterval(function() {
-//    var randomNum = Math.random() * 100;
-    var maxSpeed = 200;
-    var minSpeed = 70;
-    var randomSpeed = Math.random() * (maxSpeed - minSpeed) + minSpeed;
-    var bugLaneNum = Math.floor(Math.random() * 3 ) + 2;
-        enemy = new Enemy(-100, 83*bugLaneNum-20, randomSpeed);
-    allEnemies.push(enemy);
-    console.log(allEnemies.length);
-    return allEnemies;
-}, intervalTime);
-*/
-
     for (i=0; i<numOfBug; i++) {
         var randomSpeed = Math.random() * (maxSpeed - minSpeed) + minSpeed;
         var bugLaneNum = Math.floor(Math.random() * 3 ) + 2;
             enemy = new Enemy(-100, 83*bugLaneNum-20, randomSpeed);
         allEnemies.push(enemy);
-        console.log(allEnemies.length);
-    //    return allEnemies;
+// For debug
+//        console.log(allEnemies.length);
     }
-
-Enemy.prototype.levelUp = function() {
-    var randomSpeed = Math.random() * (maxSpeed - minSpeed) + minSpeed;
-    var bugLaneNum = Math.floor(Math.random() * 3 ) + 2;
-        enemy = new Enemy(-100, 83*bugLaneNum-20, randomSpeed);
-    allEnemies.push(enemy);
-    console.log(allEnemies.length);
-    for (i=0; i<numOfBug; i++) {
-        allEnemies[i].speed = allEnemies[i].speed + 50;
-    }
-};
-
-Enemy.prototype.bugReset = function() {
-    this.x = -100;
-    this.y = 83*(Math.floor(Math.random() * 3 ) + 2)-20;
-    this.speed = Math.random() * (maxSpeed - minSpeed) + minSpeed;
-};
-
-//console.table(allEnemies);
-
 
 var player = new Player(200,400);
 
@@ -195,30 +174,34 @@ document.addEventListener('keyup', function(e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
-
+//Render the game progress, how far for Andy's family move to Canada. 
 Game.prototype.render = function (level) {
     switch (level) {
         case 0:
+            //characters to go
             ctx.drawImage (Resources.get('images/char-you.png'),-2,483);
             ctx.drawImage (Resources.get('images/char-money.png'),99,483);
             ctx.drawImage (Resources.get('images/char-boy.png'),200,483);
             ctx.drawImage (Resources.get('images/char-girl.png'),301,483);
             break;
         case 1:
+            //characters to go
             ctx.drawImage (Resources.get('images/char-you.png'),-2,483);
             ctx.drawImage (Resources.get('images/char-money.png'),99,483);
             ctx.drawImage (Resources.get('images/char-boy.png'),200,483);
-            //finished character
+            //finished characters
             ctx.drawImage (Resources.get('images/char-wife.png'),-2,483-6*83);
             break;
         case 2:
+            //characters to go
             ctx.drawImage (Resources.get('images/char-you.png'),-2,483);
             ctx.drawImage (Resources.get('images/char-money.png'),99,483);
-            //finished character
+            //finished characters
             ctx.drawImage (Resources.get('images/char-wife.png'),-2,483-6*83);
             ctx.drawImage (Resources.get('images/char-girl.png'),99,483-6*83);
             break;
         case 3:
+            //characters to go
             ctx.drawImage (Resources.get('images/char-you.png'),-2,483);
             //finished character
             ctx.drawImage (Resources.get('images/char-wife.png'),-2,483-6*83);
@@ -226,24 +209,22 @@ Game.prototype.render = function (level) {
             ctx.drawImage (Resources.get('images/char-boy.png'),200,483-6*83);
             break;
         case 4:
-            //finished character
+            //finished characters
             ctx.drawImage (Resources.get('images/char-wife.png'),-2,483-6*83);
             ctx.drawImage (Resources.get('images/char-girl.png'),99,483-6*83);
             ctx.drawImage (Resources.get('images/char-boy.png'),200,483-6*83);
             ctx.drawImage (Resources.get('images/char-money.png'),301,483-6*83);
             break;
         case 5:
-            //finished character
+            //finished characters
             ctx.drawImage (Resources.get('images/char-wife.png'),-2,483-6*83);
             ctx.drawImage (Resources.get('images/char-girl.png'),99,483-6*83);
             ctx.drawImage (Resources.get('images/char-boy.png'),200,483-6*83);
             ctx.drawImage (Resources.get('images/char-money.png'),301,483-6*83);
             ctx.drawImage (Resources.get('images/char-you.png'),402,483-6*83);
-            //console.log(this.gameWin);
             this.gameWin = true;
-            //console.log(this.gameWin);
     }
 }
 
+//instantiate the game class for controlling. 
 var game = new Game();
-//game.render(level);
