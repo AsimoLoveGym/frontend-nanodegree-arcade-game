@@ -1,5 +1,3 @@
-frontend-nanodegree-arcade-game
-===============================
 # Arcade Game for Udacity Front End Nanodegree
 ## Move to Canada!
 ### Finished by: 13th June 2016
