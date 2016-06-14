@@ -3,7 +3,7 @@ body {
 }
 
 h1 {
-    font-family: "Comic Sans MS", cursive, sans-serif; 
+    font-family: "Comic Sans MS", cursive, sans-serif;
     margin-bottom: auto;
 }
 
@@ -54,14 +54,6 @@ div#gameWin {
     position: relative;
     bottom: 580px;
 }
-/*
-p#gameWinParagraph {
-    color: deeppink;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    font-size: 32px;
-    font-weight: 800;
-}
-*/
 
 .button {
     background-color: #4CAF50;

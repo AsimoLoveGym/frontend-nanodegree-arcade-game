@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
-    <title>Effective JavaScript: Frogger</title>
+    <title>Move to Canada: Arcade game for Udacity FEND</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-    <title>Move to Canada</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/jquery-1.12.0.min.js.css"></script>
     <script src="js/bootstrap.min.js"></script>
 </head>
+
 <body>
-    
+
     <div class="header">
         <h1>Move to Canada！</h1>
         <h4>For Udacity Front-End Nanodegree</h4>
@@ -22,8 +23,7 @@
         <i class="fa fa-weixin" data-toggle="modal" data-target="#wechat"></i>
         <a href="https://github.com/AsimoLoveGym/frontend-nanodegree-arcade-game" target="_blank"><i class="fa fa-github" ></i></a>
     </div>
-    
-    
+
     <script src="js/resources.js"></script>
     <script src="js/app.js"></script>
     <script src="js/engine.js"></script>
@@ -37,16 +37,16 @@
         <p class="winParagraph">and they <span class="emphasized">lived happily ever after!!</span></p>
         <button onclick="window.location.href='index.html'" class="button">Play Again!</button>
     </div>
-    
-        <!-- Modal -->
-    <div class="modal fade" id="gameBackground" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+    <!-- Modal -->
+    <div class="modal fade" id="gameBackground" tabindex="-1" role="dialog" aria-labelledby="myModalLabel_background" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">Game Backgroud</h4>
+                    <h4 class="modal-title" id="myModalLabel_background">Game Backgroud</h4>
                 </div>
                 <div class="modal-body">
-                    <p>2017 A.D.,</p> 
+                    <p>2017 A.D.,</p>
                     <p>Earth-199999, </p>
                     <p>Donald Trump became president of United States. </p>
                     <p>Andy and his family decide to move to Canada for a better life, </p>
@@ -58,26 +58,31 @@
             </div>
         </div>
     </div>
-    
-            <!-- Modal -->
-    <div class="modal fade" id="gameInstruction" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+    <!-- Modal -->
+    <div class="modal fade" id="gameInstruction" tabindex="-1" role="dialog" aria-labelledby="myModalLabel_instruction" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">How to Play?</h4>
+                    <h4 class="modal-title" id="myModalLabel_instruction">How to Play?</h4>
                 </div>
                 <div class="modal-body">
-                    <p>Rule is simple</p> 
-                    <p>Use arrow &#8678 &#8679 &#8680 &#8681 to move</p>
+                    <p>Rule is simple</p>
+                    <p>Use arrow &#8678; &#8679; &#8680; &#8681; to move</p>
                     <p>Avoid caught by Trump</p>
-                    <img src="images/enemy-Trump.png">
+                    <img src="images/enemy-Trump.png" alt="Trump">
                     <p>And move five characters to Canada</p>
                     <div class="instruction">
-                        <img src="images/char-wife.png"><p>Andy's wife</p>
-                        <img src="images/char-girl.png"><p>Girl</p>
-                        <img src="images/char-boy.png"><p>Boy</p>
-                        <img src="images/char-money.png"><p>Money</p>
-                        <img src="images/char-you.png"><p>Andy</p>
+                        <img src="images/char-wife.png" alt="character wife">
+                        <p>Andy's wife</p>
+                        <img src="images/char-girl.png" alt="character girl">
+                        <p>Girl</p>
+                        <img src="images/char-boy.png" alt="character boy">
+                        <p>Boy</p>
+                        <img src="images/char-money.png" alt="character money">
+                        <p>Money</p>
+                        <img src="images/char-you.png" alt="character you">
+                        <p>Andy</p>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -86,16 +91,16 @@
             </div>
         </div>
     </div>
-    
-            <!-- Modal -->
-    <div class="modal fade" id="wechat" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+    <!-- Modal -->
+    <div class="modal fade" id="wechat" tabindex="-1" role="dialog" aria-labelledby="myModalLabel_wechat" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">Add my wechat</h4>
+                    <h4 class="modal-title" id="myModalLabel_wechat">Add my wechat</h4>
                 </div>
                 <div class="modal-body">
-                    <img class="img-responsive" src="images/wechat.jpg">
+                    <img class="img-responsive" src="images/wechat.jpg" alt="wechat">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -103,6 +108,7 @@
             </div>
         </div>
     </div>
-    
+
 </body>
+
 </html>

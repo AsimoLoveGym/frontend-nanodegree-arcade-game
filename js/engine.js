@@ -13,7 +13,6 @@
  * the canvas' context (ctx) object globally available to make writing app.js
  * a little simpler to work with.
  */
-
 var Engine = (function(global) {
     /* Predefine the variables we'll be using within this scope,
      * create the canvas element, grab the 2D context for that canvas
@@ -70,7 +69,7 @@ var Engine = (function(global) {
      * game loop.
      */
     function init() {
-//        reset();
+        //        reset();
         lastTime = Date.now();
         main();
     }
@@ -88,7 +87,7 @@ var Engine = (function(global) {
         updateEntities(dt);
         // checkCollisions();
     }
-    
+
     function rendGameOver() {
         // Render the game-over image
         ctx.beginPath();
@@ -96,9 +95,9 @@ var Engine = (function(global) {
         ctx.fillStyle = "beige";
         ctx.fill();
         ctx.drawImage(Resources.get('images/game-over.png'), 20, 50);
-        doc.getElementById("gameOver").style.visibility="visible";
+        doc.getElementById("gameOver").style.visibility = "visible";
     }
-    
+
     function renderWin() {
         // Render the game winning image
         console.log("Step 2: Try to draw the win image");
@@ -107,7 +106,7 @@ var Engine = (function(global) {
         ctx.fillStyle = "beige";
         ctx.fill();
         ctx.drawImage(Resources.get('images/you-win.png'), 20, 50);
-        doc.getElementById("gameWin").style.visibility="visible";
+        doc.getElementById("gameWin").style.visibility = "visible";
     }
 
     /* This is called by the update function and loops through all of the
@@ -136,14 +135,14 @@ var Engine = (function(global) {
          */
         //ctx.globalAlpha = 0.6;//for debug
         var rowImages = [
-                'images/grass-block.png',   // Top row is water
-                'images/grass-block.png',   // Row 2 of 1 of grass
-                'images/brown-block.png',   // Row 1 of 3 of brown
-                'images/brown-block.png',   // Row 2 of 3 of brown
-                'images/brown-block.png',   // Row 3 of 3 of brown
-                'images/grass-block.png',    // Row 1 of 2 of grass
-                'images/grass-block.png',    // Row 2 of 2 of grass
-                'images/stone-block-tall.png'    // Row 2 of 2 of stone
+                'images/grass-block.png', // Top row is water
+                'images/grass-block.png', // Row 2 of 1 of grass
+                'images/brown-block.png', // Row 1 of 3 of brown
+                'images/brown-block.png', // Row 2 of 3 of brown
+                'images/brown-block.png', // Row 3 of 3 of brown
+                'images/grass-block.png', // Row 1 of 2 of grass
+                'images/grass-block.png', // Row 2 of 2 of grass
+                'images/stone-block-tall.png' // Row 2 of 2 of stone
             ],
             numRows = 8,
             numCols = 6,
@@ -153,7 +152,7 @@ var Engine = (function(global) {
          * and, using the rowImages array, draw the correct image for that
          * portion of the "grid"
          */
-        
+
         for (row = 0; row < numRows; row++) {
             for (col = 0; col < numCols; col++) {
                 /* The drawImage function of the canvas' context element
@@ -164,11 +163,11 @@ var Engine = (function(global) {
                  * we're using them over and over.
                  */
                 //ctx.globalAlpha = 0.6;//for debug
-        
+
                 if (row < 7) {
                     ctx.drawImage(Resources.get(rowImages[row]), col * 101, row * 83);
                 } else {
-                    ctx.drawImage(Resources.get(rowImages[row]), col * 101, row * 83+35);
+                    ctx.drawImage(Resources.get(rowImages[row]), col * 101, row * 83 + 35);
                 }
             }
         }
@@ -183,7 +182,7 @@ var Engine = (function(global) {
         ctx.fillStyle = "black";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        ctx.fillText ("Great Wall of Trump", 303, 650);
+        ctx.fillText("Great Wall of Trump", 303, 650);
         ctx.drawImage(Resources.get('images/Mexico.png'), 5, 790);
         ctx.restore();
         renderEntities();
