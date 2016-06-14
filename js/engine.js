@@ -173,12 +173,7 @@ var Engine = (function(global) {
                 }
             }
         }
-    
-        ctx.font = "500 45px 'Comic Sans MS'";
-        ctx.fillStyle = "tomato";
-        ctx.textAlign = "center";
-        ctx.textBaseline = "top";
-        ctx.fillText ("Move to Canada", 303, -10);
+        
         ctx.save();
         ctx.globalAlpha = 0.6;
         ctx.drawImage(Resources.get('images/canada.png'), 50, 171);
@@ -193,7 +188,6 @@ var Engine = (function(global) {
         ctx.drawImage(Resources.get('images/Mexico.png'), 5, 790);
         ctx.restore();
         renderEntities();
-        
     }
 
     /* This function is called by the render function and is called on each game

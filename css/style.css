@@ -2,8 +2,21 @@ body {
     text-align: center;
 }
 
-canvas {
-    border: 1px solid black;
+h1 {
+    font-family: "Comic Sans MS", cursive, sans-serif; 
+    margin-bottom: auto;
+}
+
+h4 {
+    margin: auto;
+}
+
+div.header {
+    display: block;
+}
+
+div.instruction, img p {
+    display: inline;
 }
 
 div#gameOver {
@@ -53,6 +66,14 @@ p#gameWinParagraph {
     font-weight: 800;
     cursor: pointer;
 }
+
+.intro {
+    background-color: white;
+    color: darkgoldenrod;
+    padding: 5px 5px;
+    margin-right: 2em;
+}
+
 .button:hover {
     background-color: darkorange;
 }
