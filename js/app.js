@@ -1,3 +1,14 @@
+/* Arcade Game for Udacity Frontend Nanodegree
+*  Author: Zhuangzhuang Xia
+*  Date: 13th June 2016
+*
+*
+*
+*/
+
+
+
+
 //Game for controlling game over and youWin.
 var Game = function() {
     this.gameOver = false;
