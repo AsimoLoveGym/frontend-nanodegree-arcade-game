@@ -4,7 +4,7 @@
 
 ===============================
 ### Game Story Background
-2017 A.D., Earth-199999, _**Donald Trump**_ became president of United States. Andy and his family decide to move to Canada for a better life, they need your help, **be their Hero!!**
+2017 A.D., Earth-199999, _**Donald Trump**_ became president of United States. Andy and his family decide to move to Canada for a better life, they need your help, **be their Hero!!**. [Start Play](http://asimolovegym.github.io/frontend-nanodegree-arcade-game/)
 
 ===============================
 ### How to Play?
